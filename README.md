@@ -1,6 +1,13 @@
 # Classifying Convective Mode in Future Climates
 ## Introduction
 
+### Objectives
+There are many objectives to achieve with this research, and they are as follows:
+
+- Use Explainable Artificial Intelligence to...
+
+One of the main goals of this repo is not only to create an open-access format for the code but also to explain it in a manner in which other researchers can utilize these tools for the betterment of the atmospheric sciences. This idea is to present all content clearly so as to allow an individual to take this code on classifying convective mode and use it to classify different types of clouds. Finally, it is important to note that not every bit of code will explained as it would be highly unnecessary to do so, but the most valuable pieces will be presented and broken down so a user can know what needs to be in the code for it to run properly and what can be modified to fit their needs. For all details, please consult the code present in this repo for recreating these methods.
+
 ## Convective Mode
 
 ### Convective Objects
@@ -11,12 +18,55 @@
 
 ## Machine Learning
 
+### Organizing Data
+
+#### Pickling Data
+When using machine learning techniques, it is important to organize data in simple formats as this allows for faster training of the model. A common method of storing numpy arrays (the input for the machine learning model) is using pickle. The below example
+
+```
+# Create the various subsets of data for each of the training datasets
+for subset, name in zip([(2007, 2014), (2015, 2016), (2017, 2018)], ("train", "validation", "test")):
+    sub_ = classes[(classes.year >= subset[0]) & (classes.year <= subset[1])].copy()
+    image_data = []
+
+    # Iterate through each row of the dataframe 
+    for rid, row in sub_.iterrows():
+
+        # Open and append each image
+        fname = f"{prefix}/{row.radar_time[5:7]}/{row.wfo}/{row.filename}"   
+        img = imageio.imread(fname, pilmode='P')
+        image_data.append(img)
+
+        # Expand the dimensions and save the labels
+        imgs = np.expand_dims(np.array(image_data), axis=3)
+        classes_ = sub_['top_class'].values
+        class_codes = [np.where(np.array(class_lookup) == classes_[x])[0][0] for x in range(len(classes_))]
+
+        # Dump to a pickle file for later use
+        pickle.dump([imgs, class_codes], open("/home/scratch/jcorner1/Thesis/data/nexrad/{}_{}_{}.pkl".format(subset[0], subset[1], name), "wb"))
+```
+
+Finally, the notebook used to format these data can be found **[[[[here]]]]**. 
+
+#### Zipping and Unzipping Dataset
+Zipping and unzipping can make it easier to transfer files from one computer system to another. Traditional zipping is slower and can corrupt data therefore, the common practice is to use tar to zip a directory with the desired data. The following command is used to zip the directory for fast transfer of data:
+
+```
+tar -zcvf nexrad.tar.gz nexrad
+```
+
+This next command is then used to unzip the directory so data can be used:
+```
+tar -xf nexrad.tar.gz
+```
+
 ### Training
+Now that the data is prepared and saved in a proper format, the training can begin. Firstly, the data must be loaded. It is important to note that data is normally standardized or normalized in some manner to 
 
 ### Classifying Mode
 
-### Explainable Artifical Itelligence
-Explainable Artifical Itelligence, or XAI, is...
+### Explainable Artificial Intelligence
+Explainable Artificial Intelligence, or XAI, is...
 
 #### Backwards Optimization
 
@@ -40,4 +90,4 @@ Scott Collis - Collaborator &nbsp; &nbsp; &nbsp; <a href="https://github.com/sco
 
 ## Acknowledgements 
 
-The author and committee members would like to acknowledge the... We would also like to thank Unidata and Jetstream's computational power and GPU access. Finally, the author thanks his committee members for all their help and his advisor for the many opportunities provided to him. 
+The author and committee members would like to acknowledge the... We would also like to thank Unidata and Jetstream's computational power and GPU access. Finally, the author thanks his committee members for all their help and his advisor for the many opportunities provided to him to become a better scientist. 

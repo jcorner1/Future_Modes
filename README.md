@@ -1,6 +1,13 @@
 # Classifying Convective Mode in Future Climates
 ## Introduction
 
+### Data
+These data are unique as they follow a couple of Representative Concentration Pathways (RCP(s); both the 4.5 and 8.5 scenarios are modeled in these data), which account for radiative forcing caused by increased levels of greenhouse gases within the atmosphere. RCPs are outlined in the <a href="https://www.ipcc.ch/report/ar5/syr/">Intergovernmental Panel on Climate Change 5th Assessment Report</a> addressing potential atmospheric responses to global climate change. The 4.5 scenario represents a peak in 2040 in carbon emissions and a steady decline till the end. RCP 4.5 is considered an intermediate pathway the most likely to happen in future climates. The 8.5 scenario indicates a worst-case situation with no decline in carbon emissions through 2100.
+
+<p>
+    <img src="https://github.com/jcorner1/Future_Modes/blob/main/Plots/All_forcing_agents_CO2_equivalent_concentration.svg.png?raw=true" width="600" height="320" />
+</p>
+
 ### Objectives
 There are many objectives to achieve with this research, and they are as follows:
 

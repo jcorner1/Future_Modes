@@ -4,7 +4,8 @@
 ### Objectives
 There are many objectives to achieve with this research, and they are as follows:
 
-- Use Explainable Artificial Intelligence to...
+- View the future shift in convective mode under different climate change scenarios. 
+- Use Explainable Artificial Intelligence to understand a machine learning model's interpretation of input.
 
 One of the main goals of this repo is not only to create an open-access format for the code but also to explain it in a manner in which other researchers can utilize these tools for the betterment of the atmospheric sciences. This idea is to present all content clearly so as to allow an individual to take this code on classifying convective mode and use it to classify different types of clouds. Finally, it is important to note that not every bit of code will explained as it would be highly unnecessary to do so, but the most valuable pieces will be presented and broken down so a user can know what needs to be in the code for it to run properly and what can be modified to fit their needs. For all details, please consult the code present in this repo for recreating these methods.
 
@@ -61,18 +62,32 @@ tar -xf nexrad.tar.gz
 ```
 
 ### Training
-Now that the data is prepared and saved in a proper format, the training can begin. Firstly, the data must be loaded. It is important to note that data is normally standardized or normalized in some manner to 
+Now that the data is prepared and saved in a proper format, the training can begin. This example will use a smaller dataset as it would be impossible to upload the file to this repository. Firstly, the data must be loaded into memory from the pickle files. It is important to note that data is normally standardized or normalized in some manner to 
+
+#### Data Augmentation
+
 
 ### Classifying Mode
 
 ### Explainable Artificial Intelligence
-Explainable Artificial Intelligence, or XAI, is...
+Explainable Artificial Intelligence, or XAI, is a development to solve a prime issue in machine learning which is understanding how a model makes its predictions (). XAI ...
 
 #### Backwards Optimization
 
 #### Gradient x Input
 
 ## Conclusion
+
+### References
+
+### Additional Resources
+- https://medium.com/latinxinai/how-i-deployed-a-machine-learning-model-for-the-first-time-b82b9ea831e0
+- https://github.com/amamalak/XAI-baselines
+- https://github.com/djgagne/deepsky
+- https://github.com/ai2es/WAF_ML_Tutorial_Part2/tree/main
+
+### Packages
+
 
 ## Author Information
 Jeremy Corner - M.S. Student &nbsp; &nbsp; &nbsp;  <a href="https://github.com/jcorner1">Github</a> &nbsp; | &nbsp;<a href="https://twitter.com/JcornerWx">Twitter</a> &nbsp; | &nbsp; <a href="mailto:jcorner1@niu.edu">Email</a>

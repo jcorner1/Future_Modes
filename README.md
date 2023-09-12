@@ -54,7 +54,7 @@ for subset, name in zip([(2007, 2014), (2015, 2016), (2017, 2018)], ("train", "v
         pickle.dump([imgs, class_codes], open("/home/scratch/jcorner1/Thesis/data/nexrad/{}_{}_{}.pkl".format(subset[0], subset[1], name), "wb"))
 ```
 
-Finally, the notebook used to format these data can be found **[[[[here]]]]**. 
+Finally, the notebook used to format these data can be found <a href="https://github.com/jcorner1/Future_Modes/blob/main/Code/Create_Training_Pickles.ipynb">here</a>.
 
 #### Zipping and Unzipping Dataset
 Zipping and unzipping can make it easier to transfer files from one computer system to another. Traditional zipping is slower and can corrupt data therefore, the common practice is to use tar to zip a directory with the desired data. The following command is used to zip the directory for fast transfer of data:
@@ -72,7 +72,23 @@ tar -xf nexrad.tar.gz
 Now that the data is prepared and saved in a proper format, the training can begin. This example will use a smaller dataset as it would be impossible to upload the file to this repository. Firstly, the data must be loaded into memory from the pickle files. It is important to note that data is normally standardized or normalized in some manner to 
 
 #### Data Augmentation
+Data augmentation is another common practice used in machine learning. Data augmentation is usually required to prevent a model from overfitting (i.e., to keep the model from fitting to the training data too well). Data augmentation usually requires altering the orientation/size of the object in the image. The below images are used to explain the method of data augmentation performed in this study. If the single image from the training dataset is seen by the model during each epoch when compiling it, the model will look at specific details in that image that might not necessarily reflect the desired details the model is supposed to differentiate from.     
 
+<p>
+    <img src="https://github.com/jcorner1/Future_Modes/blob/main/Plots/Single_image_noaug.JPG" width="469" height="417" />
+</p>
+
+Therefore, to reduce this effect and teach the model to view data in a more general sense (such as how a person might do), augmentation is undergone. Running the code below achieves this effect:
+
+```
+datagen = ImageDataGenerator(rotation_range=55, zoom_range=[0.9,1.0], fill_mode="reflect")
+```
+
+and produces this change to the training dataset for every image.
+
+<p>
+    <img src="https://github.com/jcorner1/Future_Modes/blob/main/Plots/Data_aug_images.JPG" width="913" height="865" />
+</p>
 
 ### Classifying Mode
 
